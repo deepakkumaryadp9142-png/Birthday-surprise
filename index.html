@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff9ecf,#ffd6e7,#ffe8f2);
+    overflow:hidden;
+}
+
+.container{
+    width:90%;
+    max-width:450px;
+    background:white;
+    padding:30px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    z-index:2;
+}
+
+h1{
+    color:#ff4f8b;
+    margin-bottom:20px;
+}
+
+input{
+    width:90%;
+    padding:12px;
+    border-radius:10px;
+    border:2px solid pink;
+    outline:none;
+    font-size:18px;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    background:#ff4f8b;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+#surprise{
+    display:none;
+}
+
+.message{
+    font-size:20px;
+    color:#444;
+    margin-top:15px;
+}
+
+.hearts{
+    position:absolute;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    top:0;
+    left:0;
+    pointer-events:none;
+}
+
+.heart{
+    position:absolute;
+    color:#ff4f8b;
+    animation:float 6s linear infinite;
+    font-size:25px;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-10vh);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<div class="container">
+
+<div id="login">
+
+<h1>💖 Birthday Surprise 💖</h1>
+
+<p>Enter your name</p><br>
+
+<input type="text" id="name" placeholder="Your Name">
+
+<br>
+
+<button onclick="checkName()">Continue</button>
+
+</div>
+
+<div id="surprise">
+
+<h1 id="title"></h1>
+
+<p class="message">
+🎂 Happy Birthday! 🎂
+<br><br>
+
+May your smile always stay bright,
+your dreams come true,
+and may today be filled with happiness,
+love, laughter, and unforgettable memories.
+
+You are truly an amazing person. ❤️
+
+</p>
+
+<h2 style="margin-top:20px;">🎉🎈🎁💖🌸✨</h2>
+
+</div>
+
+</div>
+
+<script>
+
+const correctName="Rashmi"; // Change this
+
+function checkName(){
+
+let user=document.getElementById("name").value.trim();
+
+if(user.toLowerCase()==correctName.toLowerCase()){
+
+document.getElementById("login").style.display="none";
+
+document.getElementById("surprise").style.display="block";
+
+document.getElementById("title").innerHTML=
+"🎉 Happy Birthday "+correctName+" ❤️";
+
+createHearts();
+
+}else{
+
+alert("Oops! This surprise is only for someone very special ❤️");
+
+}
+
+}
+
+//function createHearts(){
+
+setInterval(()=>{
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="💖";
+
+heart.style.left=Math.random()*100+"%";
+
+heart.style.fontSize=(20+Math.random()*25)+"px";
+
+heart.style.animationDuration=(3+Math.random()*3)+"s";
+
+document.getElementById("hearts").appendChild(heart);
+
+setTimeout(()=>heart.remove(),6000);
+
+},200);
+
+}
+
+</script>
+
+</body>
+</html>
